@@ -213,6 +213,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 		
 		if (e.isBoolean()) return MJType.getBooleanType();
 		if (e.isInt()) return MJType.getIntType();
+		if (e.isDouble()) return MJType.getDoubleType();   // tilføjet
 		if (e.isVoid()) return MJType.getVoidType();
 		if (e.isClass()) {
 			try {
@@ -408,8 +409,8 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to < must be of same type");
 		}
 		
-		if(!ltype.isInt()) {
-			throw new TypeCheckerException("Arguments to < must be of type int");
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilføjet
+			throw new TypeCheckerException("Arguments to < must be of type int or double");
 		}
 		e.setType(MJType.getBooleanType());
 		return e.getType();
@@ -424,8 +425,8 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to + must be of same type");
 		}
 		
-		if(!(ltype.isInt() || (ltype.isClass() && ltype.getName().equals("String")))) {
-			throw new TypeCheckerException("Arguments to + must be of type int or String");
+		if(!(ltype.isInt() || (ltype.isClass() && ltype.getName().equals("String")) || ltype.isDouble())) {  // tilføjet
+			throw new TypeCheckerException("Arguments to + must be of type int, double or String");
 		}
 		
 		e.setType(ltype);
@@ -441,8 +442,8 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to - must be of same type");
 		}
 		
-		if(!ltype.isInt()) {
-			throw new TypeCheckerException("Arguments to - must be of type int");
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilføjet
+			throw new TypeCheckerException("Arguments to - must be of type int or double");
 		}
 		
 		e.setType(ltype);
@@ -458,8 +459,8 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to * must be of same type");
 		}
 		
-		if(!ltype.isInt()) {
-			throw new TypeCheckerException("Arguments to * must be of type int");
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilføjet
+			throw new TypeCheckerException("Arguments to * must be of type int or double");
 		}
 		
 		e.setType(ltype);
@@ -470,8 +471,8 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 		
 		MJType type = visitExpression(e.getArgument());
 		
-		if(!type.isInt()) {
-			throw new TypeCheckerException("Arguments to - must be of type int");
+		if(!(type.isInt() || type.isDouble())) {
+			throw new TypeCheckerException("Arguments to - must be of type int or double");
 		}
 		
 		e.setType(type);
@@ -731,7 +732,8 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitExpression(MJDouble e) throws VisitorException {
-		return null;
+		e.setType(MJType.getDoubleType()); // tilføjet
+		return e.getType();
 	}
 
 	public MJType visitExpression(MJPostIncrementExpr e)
