@@ -688,7 +688,26 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitStatement(MJFor e) throws VisitorException {
-		return null;
+		//Typecheck var assigment
+		MJType assign = visitStatement(e.getInit());
+				
+		// typecheck the condition
+		MJType condType = visitExpression(e.getCondition());
+
+		// which must have type boolean
+		if (!condType.isBoolean()) {
+			throw new TypeCheckerException("Type of condition must be boolean");
+		}
+		
+		//Typecheck increment
+		MJType incre = visitStatement(e.getIncrement());
+		
+//		if (!incre.equals(obj))
+
+		// then typecheck the body
+		visitStatement(e.getBlock());
+
+		return MJType.getVoidType();
 	}
 
 	public MJType visitStatement(MJThrow e) throws VisitorException {
@@ -720,7 +739,19 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitExpression(MJDivide e) throws VisitorException {
-		return null;
+		MJType ltype = visitExpression(e.getLhs());
+		MJType rtype = visitExpression(e.getRhs());
+		
+		if (!ltype.isSame(rtype)) { 
+			throw new TypeCheckerException("Arguments to / must be of same type");
+		}
+		
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilf�jet
+			throw new TypeCheckerException("Arguments to / must be of type int or double");
+		}
+		
+		e.setType(ltype);
+		return e.getType();
 	}
 
 	public MJType visitExpression(MJModulo e) throws VisitorException {
@@ -772,5 +803,12 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 
 	public MJType visitExpression(MJNoStatement e) throws VisitorException {
 		return null;
+	}
+
+	@Override
+	public MJType visitStatement(MJNoStatement e) throws VisitorException {
+		// TODO Auto-generated method stub
+		visitStatement((MJNoStatement)e);
+		return MJType.getVoidType();
 	}
 }
