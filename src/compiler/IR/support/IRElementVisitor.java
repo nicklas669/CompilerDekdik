@@ -127,6 +127,6 @@ public abstract class IRElementVisitor<T>  {
 	public abstract T visitExpression(MJSelector e) throws VisitorException;
 	
 	public abstract T visitExpression(MJNoExpression e) throws VisitorException;
-	public abstract T visitExpression(MJNoStatement e) throws VisitorException;
+	public abstract T visitStatement(MJNoStatement e) throws VisitorException;
 	
 }

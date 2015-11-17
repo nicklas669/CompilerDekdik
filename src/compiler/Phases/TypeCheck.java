@@ -213,7 +213,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 		
 		if (e.isBoolean()) return MJType.getBooleanType();
 		if (e.isInt()) return MJType.getIntType();
-		if (e.isDouble()) return MJType.getDoubleType();   // tilføjet
+		if (e.isDouble()) return MJType.getDoubleType();   // tilfï¿½jet
 		if (e.isVoid()) return MJType.getVoidType();
 		if (e.isClass()) {
 			try {
@@ -409,7 +409,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to < must be of same type");
 		}
 		
-		if(!(ltype.isInt() || ltype.isDouble())) { // tilføjet
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilfï¿½jet
 			throw new TypeCheckerException("Arguments to < must be of type int or double");
 		}
 		e.setType(MJType.getBooleanType());
@@ -425,7 +425,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to + must be of same type");
 		}
 		
-		if(!(ltype.isInt() || (ltype.isClass() && ltype.getName().equals("String")) || ltype.isDouble())) {  // tilføjet
+		if(!(ltype.isInt() || (ltype.isClass() && ltype.getName().equals("String")) || ltype.isDouble())) {  // tilfï¿½jet
 			throw new TypeCheckerException("Arguments to + must be of type int, double or String");
 		}
 		
@@ -442,7 +442,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to - must be of same type");
 		}
 		
-		if(!(ltype.isInt() || ltype.isDouble())) { // tilføjet
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilfï¿½jet
 			throw new TypeCheckerException("Arguments to - must be of type int or double");
 		}
 		
@@ -459,7 +459,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 			throw new TypeCheckerException("Arguments to * must be of same type");
 		}
 		
-		if(!(ltype.isInt() || ltype.isDouble())) { // tilføjet
+		if(!(ltype.isInt() || ltype.isDouble())) { // tilfï¿½jet
 			throw new TypeCheckerException("Arguments to * must be of type int or double");
 		}
 		
@@ -732,7 +732,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitExpression(MJDouble e) throws VisitorException {
-		e.setType(MJType.getDoubleType()); // tilføjet
+		e.setType(MJType.getDoubleType()); // tilfï¿½jet
 		return e.getType();
 	}
 
