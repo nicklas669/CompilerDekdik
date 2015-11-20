@@ -688,22 +688,20 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitStatement(MJFor e) throws VisitorException {
-		//Typecheck var assigment
-		MJType assign = visitStatement(e.getInit());
+		// typecheck var init
+		 visitStatement((MJAssign) e.getInit());
 				
 		// typecheck the condition
 		MJType condType = visitExpression(e.getCondition());
 
-		// which must have type boolean
+		// condition must have type boolean
 		if (!condType.isBoolean()) {
 			throw new TypeCheckerException("Type of condition must be boolean");
 		}
 		
-		//Typecheck increment
-		MJType incre = visitStatement(e.getIncrement());
+		// typecheck increment
+		visitStatement((MJAssign) e.getIncrement());
 		
-//		if (!incre.equals(obj))
-
 		// then typecheck the body
 		visitStatement(e.getBlock());
 
