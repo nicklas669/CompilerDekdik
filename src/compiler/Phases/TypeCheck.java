@@ -675,7 +675,30 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitConstructor(MJConstructor e) throws VisitorException {
-		return null;
+		// parameters/arguments must typecheck
+		// we need a new scope for the parameters
+		IR.stack.enterScope();
+
+		for (MJVariable par : e.getParameters()) {
+
+			// each parameter is type checked
+			visitVariable(par);
+
+			// and added to the scope
+			try {
+				IR.stack.add(par);
+			} catch (VariableAlreadyDeclared exc) {
+				throw new TypeCheckerException("Constructor "+e.getName()+" has duplicate parameter "+par.getName());
+			}
+		}
+		
+		// now we typecheck the body
+		visitStatement(e.getBody());
+
+		// and leave the scope
+		IR.stack.leaveScope();
+
+		return MJType.getVoidType();
 	}
 
 	public MJType visitStatement(MJTryBlock e) throws VisitorException {
@@ -689,7 +712,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 
 	public MJType visitStatement(MJFor e) throws VisitorException {
 		// typecheck var init
-		 visitStatement((MJAssign) e.getInit());
+		 visitStatement(e.getInit());
 				
 		// typecheck the condition
 		MJType condType = visitExpression(e.getCondition());
@@ -700,7 +723,7 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 		}
 		
 		// typecheck increment
-		visitStatement((MJAssign) e.getIncrement());
+		visitStatement(e.getIncrement());
 		
 		// then typecheck the body
 		visitStatement(e.getBlock());
