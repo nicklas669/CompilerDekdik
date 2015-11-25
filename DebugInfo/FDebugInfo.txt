@@ -1,0 +1,13 @@
+Compiled from "F.java"
+public class F {
+  java.lang.String x;
+
+  public F();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc           #2                  // String Hestesko
+       7: putfield      #3                  // Field x:Ljava/lang/String;
+      10: return
+}

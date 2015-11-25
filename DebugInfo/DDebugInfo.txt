@@ -1,0 +1,13 @@
+Compiled from "D.java"
+public class D {
+  boolean x;
+
+  public D();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_1
+       6: putfield      #2                  // Field x:Z
+       9: return
+}

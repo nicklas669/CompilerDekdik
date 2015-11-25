@@ -1,0 +1,13 @@
+Compiled from "I.java"
+public class I {
+  public I();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public java.lang.String test();
+    Code:
+       0: ldc           #2                  // String Heste
+       2: areturn
+}

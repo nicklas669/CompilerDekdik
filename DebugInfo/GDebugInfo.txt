@@ -1,0 +1,13 @@
+Compiled from "G.java"
+public class G {
+  double x;
+
+  public G();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc2_w        #2                  // double 10.0d
+       8: putfield      #4                  // Field x:D
+      11: return
+}

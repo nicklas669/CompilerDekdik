@@ -1,0 +1,13 @@
+Compiled from "J.java"
+public class J {
+  public J();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public double test();
+    Code:
+       0: ldc2_w        #2                  // double 4.2d
+       3: dreturn
+}

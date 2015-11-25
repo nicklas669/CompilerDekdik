@@ -1,0 +1,13 @@
+Compiled from "C.java"
+public class C {
+  double x;
+
+  public C();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: ldc2_w        #2                  // double 5.5d
+       8: putfield      #4                  // Field x:D
+      11: return
+}

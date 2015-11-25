@@ -1,0 +1,13 @@
+Compiled from "H.java"
+public class H {
+  public H();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  public int test();
+    Code:
+       0: bipush        42
+       2: ireturn
+}
