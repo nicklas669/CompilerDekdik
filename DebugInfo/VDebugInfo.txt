@@ -1,0 +1,16 @@
+Compiled from "V.java"
+public class V {
+  public V();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: new           #2                  // class java/io/IOException
+       7: dup
+       8: invokespecial #3                  // Method java/io/IOException."<init>":()V
+      11: athrow
+      12: astore_1
+      13: return
+    Exception table:
+       from    to  target type
+           4    12    12   Class java/io/IOException
+}

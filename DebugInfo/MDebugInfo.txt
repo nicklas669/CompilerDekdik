@@ -1,0 +1,27 @@
+Compiled from "M.java"
+public class M {
+  int x;
+
+  int y;
+
+  int z;
+
+  public M();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: aload_0
+       5: iconst_2
+       6: putfield      #2                  // Field x:I
+       9: aload_0
+      10: iconst_3
+      11: putfield      #3                  // Field y:I
+      14: aload_0
+      15: aload_0
+      16: getfield      #2                  // Field x:I
+      19: aload_0
+      20: getfield      #3                  // Field y:I
+      23: iadd
+      24: putfield      #4                  // Field z:I
+      27: return
+}

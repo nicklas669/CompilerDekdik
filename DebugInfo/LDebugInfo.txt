@@ -1,0 +1,13 @@
+Compiled from "L.java"
+public class L {
+  public L();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: return
+
+  static int test();
+    Code:
+       0: iconst_5
+       1: ireturn
+}

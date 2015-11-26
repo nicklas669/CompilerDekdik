@@ -1,0 +1,16 @@
+Compiled from "R.java"
+public class R {
+  public R();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: new           #2                  // class C
+       7: dup
+       8: invokespecial #3                  // Method C."<init>":()V
+      11: astore_1
+      12: getstatic     #4                  // Field java/lang/System.out:Ljava/io/PrintStream;
+      15: aload_1
+      16: getfield      #5                  // Field C.x:D
+      19: invokevirtual #6                  // Method java/io/PrintStream.println:(D)V
+      22: return
+}

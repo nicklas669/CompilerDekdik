@@ -1,0 +1,11 @@
+Compiled from "O.java"
+public class O {
+  public O();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: getstatic     #2                  // Field java/lang/System.out:Ljava/io/PrintStream;
+       7: bipush        42
+       9: invokevirtual #3                  // Method java/io/PrintStream.println:(I)V
+      12: return
+}

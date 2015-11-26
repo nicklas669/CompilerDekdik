@@ -1,0 +1,15 @@
+Compiled from "S.java"
+public class S {
+  public S();
+    Code:
+       0: aload_0
+       1: invokespecial #1                  // Method java/lang/Object."<init>":()V
+       4: new           #2                  // class H
+       7: dup
+       8: invokespecial #3                  // Method H."<init>":()V
+      11: astore_1
+      12: aload_1
+      13: invokevirtual #4                  // Method H.test:()I
+      16: istore_2
+      17: return
+}
