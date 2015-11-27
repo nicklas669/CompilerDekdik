@@ -1,6 +1,6 @@
-Compiled from "S.java"
-public class S {
-  public S();
+Compiled from "T.java"
+public class T {
+  public T();
     Code:
        0: aload_0
        1: invokespecial #1                  // Method java/lang/Object."<init>":()V
@@ -10,6 +10,6 @@ public class S {
       11: astore_1
       12: aload_1
       13: invokevirtual #4                  // Method H.test:()I
-      16: istore_2
+      16: pop
       17: return
 }
