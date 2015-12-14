@@ -776,7 +776,19 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 	}
 
 	public MJType visitExpression(MJModulo e) throws VisitorException {
-		return null;
+			MJType ltype = visitExpression(e.getLhs());
+			MJType rtype = visitExpression(e.getRhs());
+			
+			if (!ltype.isSame(rtype)) { 
+				throw new TypeCheckerException("Arguments to % must be of same type!");
+			}
+			
+			if(!ltype.isInt()) { // tilf�jet
+				throw new TypeCheckerException("Arguments to % must be of type int!");
+			}
+			
+			e.setType(ltype);
+			return e.getType();
 	}
 
 	public MJType visitExpression(MJChar e) throws VisitorException {
