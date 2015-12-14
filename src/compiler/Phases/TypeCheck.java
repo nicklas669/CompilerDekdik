@@ -802,7 +802,14 @@ public class TypeCheck extends IRElementVisitor<MJType> {
 
 	public MJType visitExpression(MJPostIncrementExpr e)
 			throws VisitorException {
-		return null;
+		
+		MJType type = e.getArgument().getType();
+		if(!type.isInt()) { //
+			throw new TypeCheckerException("Arguments to ++ must be of type int!");
+		}
+		
+		e.setType(type);
+		return e.getType();
 	}
 
 	public MJType visitExpression(MJPreIncrementExpr e) throws VisitorException {
